@@ -72,3 +72,8 @@ Plugins/*/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+# Large Assets from Megascans or Epic Marketplace
+SetDressing/
+BlackAlder/
+PN_interactiveSpruceForest/

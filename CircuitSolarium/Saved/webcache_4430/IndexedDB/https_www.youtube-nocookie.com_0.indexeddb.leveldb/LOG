@@ -1,0 +1,6 @@
+2023/11/30-14:04:13.239 45ac Creating DB S:/GitHub/circuit-solarium-unreal-exporations/CircuitSolarium/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb since it was missing.
+2023/11/30-14:04:13.248 45ac Reusing MANIFEST S:/GitHub/circuit-solarium-unreal-exporations/CircuitSolarium/Saved/webcache_4430\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001
+2023/11/30-21:58:16.689 24fc Level-0 table #5: started
+2023/11/30-21:58:16.698 24fc Level-0 table #5: 1211 bytes OK
+2023/11/30-21:58:16.702 24fc Delete type=0 #3
+2023/11/30-21:58:16.703 24fc Manual compaction at level-0 from (begin) .. (end); will stop at (end)
