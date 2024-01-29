@@ -1,0 +1,14 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"C:/GitHub/circuit-solarium-unreal-exporations/CircuitSolarium/Content/Main.umap",
+				"C:/GitHub/circuit-solarium-unreal-exporations/CircuitSolarium/Content/Main_BuiltData.uasset",
+				"C:/GitHub/circuit-solarium-unreal-exporations/CircuitSolarium/Content/Maps/FrozenForest.umap"
+			]
+		}
+	]
+}
