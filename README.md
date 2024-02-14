@@ -4,7 +4,7 @@ Combination of Unreal Engine and TouchDesigner with VR Tracking, Camera-based bo
 
 This project & performance is our first project using Unreal Engine 5. It is an exploration of how to work with this new tool while also streamlining and improving our system overall. 
 
-
+![Figure 1](/.eraser/KN5uxc36LlXSmmXT149l___tTtaXijJXwZgula4by2oOh994aM2___---figure---ETwTTC5Gc1c-OY4OYR3_w---figure---nvYA598GvXfZLp4iEEJ0WA.png "Figure 1")
 
 Currently this project is being designed to run on a single, powerful desktop, but we are also trying to figure out how it could make sense to distribute tasks between two or more machines, or how to effectively utilize multiple gpus.
 
