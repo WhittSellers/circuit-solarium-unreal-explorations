@@ -6,7 +6,7 @@
 /NAME:"UnrealEditor-OWLScreenCapture.dll"
 /IGNORE:4221
 /NODEFAULTLIB
-"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp17.h.obj"
+"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp20.h.obj"
 "C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWLScreenCapture\OWLScreenCapture.gen.cpp.obj"
 "C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWLScreenCapture\OWLScreenCapture.init.gen.cpp.obj"
 "C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWLScreenCapture\OWLScreenCapturerOptions.gen.cpp.obj"

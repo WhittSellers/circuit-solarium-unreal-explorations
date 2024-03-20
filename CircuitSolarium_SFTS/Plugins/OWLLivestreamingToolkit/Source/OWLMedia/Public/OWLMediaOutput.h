@@ -182,6 +182,7 @@ private:
 	void OnAuthChanged();
 	void BindToAuthChanged();
 	bool CheckRunnableQueue(float Delta);
+	bool CheckAsyncMinsQueue(float Delta);
 	bool ValidateAuth();
 	void ReportFailedAuth();
 	bool UpdateMeteredMins();
@@ -207,6 +208,7 @@ private:
 	int FilenameIteration = 0;
 	FTSTicker::FDelegateHandle ReconnectionTickerHandle;
 	FTSTicker::FDelegateHandle RunnableQueueHandle;
+	FTSTicker::FDelegateHandle AsyncMinsHandle;
 	FDelegateHandle AuthChangedHandle;
 	FDelegateHandle LoggedOutHandle;
 	// mzlt: todo: do we want to limit reconnections?
@@ -228,18 +230,17 @@ private:
 	// used be the server to aggregate updates into single database rows
 	FString StreamIdentifier;
 
-	bool RequestingMeteredMins = false;
+	TAtomic<bool> RequestingMeteredMins = false;
 	// have MinutesRemaining been set
-	bool MinutesRemainingSet = false;
-	// create a promise which is resolved when minutes remaining first set
-	// this is then used for to wait the first time a user presses start
-	// to ensure that we have a somewhat accurate mins remaining
-	TPromise<void> MinutesRemainingSetPromise;
+	TAtomic<bool> MinutesRemainingSet = false;
+	TQueue<int, EQueueMode::Mpsc> MinutesRemainingQueue;
 
 	bool IsStopping = false;
 
 	UPROPERTY()
 	UTextureRenderTarget2D* IntermediateTarget = nullptr;
+
+	bool bHasNotifiedResolutionMismatch = false;
 
 	void Cleanup();
 	void TryReconnect();
@@ -249,6 +250,12 @@ private:
 	void SetDurationMs();
 	bool CheckMinutesRemaining();
 	void OnMeteredRunnableStopped();
+
+	// because the loading of metered mins is async
+	// any destructive action on the class
+	// should use this method to block until the minutes
+	// have been fetched
+	void BlockUntilMinutesRequested();
 
 	UFUNCTION()
 	void StartWhenAuthReady();

@@ -1,8 +1,8 @@
 "C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\UnrealEditor\Inc\OWLScreenCapture\UHT\OWLScreenCapturerOptions.gen.cpp"
-/FI"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp17.h"
+/FI"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp20.h"
 /FI"C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWLScreenCapture\Definitions.OWLScreenCapture.h"
-/Yu"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp17.h"
-/Fp"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp17.h.pch"
+/Yu"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp20.h"
+/Fp"C:\toolkit-tmp\Intermediate\Build\Win64\x64\BuildTempEditor\Development\Engine\SharedPCH.Engine.Cpp20.h.pch"
 /Fo"C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWLScreenCapture\OWLScreenCapturerOptions.gen.cpp.obj"
 /sourceDependencies "C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWLScreenCapture\OWLScreenCapturerOptions.gen.cpp.dep.json"
 @"C:\toolkit-tmp\Plugins\OWLLivestreamingToolkit\Intermediate\Build\Win64\x64\UnrealEditor\Development\OWLScreenCapture\OWLScreenCapture.Shared.rsp"
@@ -45,4 +45,6 @@
 /TP
 /GR-
 /W4
-/std:c++17
+/std:c++20
+/Zc:preprocessor
+/wd5054

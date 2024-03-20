@@ -52,6 +52,8 @@ enum class EOWLOutputBufferVisualisation : uint8
 	BV_MattePassInverted UMETA(DisplayName="Matte Pass (Garbage)"),
 };
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnCaptureComponentResized);
+
 
 UCLASS(Blueprintable, hidecategories = (Collision, Object, Physics, SceneComponent, Mobility, Tags, Activation, Cooking, Rendering), ClassGroup = Rendering, meta = (BlueprintSpawnableComponent))
 class OWLCAMERA_API UOWLCaptureComponent : public USceneComponent
@@ -150,7 +152,11 @@ public:
 
 	/** Forces the `bCameraCut` flag which disables inter-frame caching for certain Unreal post-processing, like TSR motion blur. Disable if you notice performance degradation or lack of inter-frame effects */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Off World Live Capture Settings|Advanced")
-	bool bForceCameraCut = true;
+	bool bForceCameraCut = false;
+
+public:
+	UPROPERTY(BlueprintAssignable, Category="Off World Live Capture Settings", meta=(ToolTip="Triggered whenever the render target has been resized. This can be essential when triggering a media output stream on begin play"))
+	FOnCaptureComponentResized OnTargetResized;
 
 public:
 	UFUNCTION(BlueprintPure, Category = "OWLCapture")
@@ -304,6 +310,7 @@ private:
 	void InvertAlphaAndFinish_RenderThread(FRHICommandListImmediate& RHICmdList, UTextureRenderTarget2D* Target,  FRHITexture2D* InSourceTexture);
 	void Finish_RenderThread(FRHICommandListImmediate& RHICmdList, UTextureRenderTarget2D* Target, FRHITexture2D* InSourceTexture);
 	ESceneCaptureSource SourceFromBufferType(EOWLOutputBufferVisualisation Viz);
+	bool ShowOnlyActive() const;
 
 private:
 	bool WrongAttachmentWarningIssued = false;

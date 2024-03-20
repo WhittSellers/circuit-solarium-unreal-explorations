@@ -7,23 +7,29 @@
 #include "UObject/GeneratedCppIncludes.h"
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeOWLCamera_init() {}
+	OWLCAMERA_API UFunction* Z_Construct_UDelegateFunction_OWLCamera_OnCaptureComponentResized__DelegateSignature();
+	OWLCAMERA_API UFunction* Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature();
 	static FPackageRegistrationInfo Z_Registration_Info_UPackage__Script_OWLCamera;
 	FORCENOINLINE UPackage* Z_Construct_UPackage__Script_OWLCamera()
 	{
 		if (!Z_Registration_Info_UPackage__Script_OWLCamera.OuterSingleton)
 		{
+			static UObject* (*const SingletonFuncArray[])() = {
+				(UObject* (*)())Z_Construct_UDelegateFunction_OWLCamera_OnCaptureComponentResized__DelegateSignature,
+				(UObject* (*)())Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature,
+			};
 			static const UECodeGen_Private::FPackageParams PackageParams = {
 				"/Script/OWLCamera",
-				nullptr,
-				0,
+				SingletonFuncArray,
+				UE_ARRAY_COUNT(SingletonFuncArray),
 				PKG_CompiledIn | 0x00000000,
-				0xA476D094,
-				0x24FEDD52,
+				0x988A6A38,
+				0xE96148F2,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_OWLCamera.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_OWLCamera.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_OWLCamera(Z_Construct_UPackage__Script_OWLCamera, TEXT("/Script/OWLCamera"), Z_Registration_Info_UPackage__Script_OWLCamera, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xA476D094, 0x24FEDD52));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_OWLCamera(Z_Construct_UPackage__Script_OWLCamera, TEXT("/Script/OWLCamera"), Z_Registration_Info_UPackage__Script_OWLCamera, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x988A6A38, 0xE96148F2));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS

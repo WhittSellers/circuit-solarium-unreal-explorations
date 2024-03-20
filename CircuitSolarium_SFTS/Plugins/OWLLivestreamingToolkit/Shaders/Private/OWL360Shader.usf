@@ -26,6 +26,11 @@ Texture2D DownFace;
 Texture2D FrontFace;
 Texture2D BackFace;
 
+
+// Stereo Textures
+Texture2D LeftEye;
+Texture2D RightEye;
+
 // Equi params
 
 Texture2D EquiTexture;
@@ -64,8 +69,18 @@ Texture2D BackOriginal;
 float BloomIntensity;
 int InvertAlpha;
 
-// dome params
+// stereo layout (landscape - left/right, portrait - top/bottom)
+#ifndef STEREO_LANDSCAPE
+#define STEREO_LANDSCAPE false
+#endif
+
+#ifndef IS_VR180
+#define IS_VR180 false
+#endif
+
 float Angle;
+
+// dome params
 float3x3 DomeRotMat;
 
 // mirror dome params
@@ -221,7 +236,13 @@ float4 Sample(Texture2D Face, float2 uv)
 float2 EquiUVToPhiTheta(float2 uv)
 {
     float2 expanded = float2(uv.x, uv.y) * 2.f  - 1.f;
+
+#if IS_VR180
+    float2 phiTheta = float2(expanded.x, expanded.y) * PIH + float2(PI, 0.);
+#else
     float2 phiTheta = float2(expanded.x, expanded.y) * float2(PI, PIH) + float2(PI, 0.);
+#endif
+
     // in equi projections phi is x, theta is y
     return phiTheta;
 }
@@ -469,6 +490,44 @@ void CubeMapOutputPS(
     {
         OutColor.a = (1.0 - OutColor.a);
     }
+}
+
+void StereoRenderingPS(
+    in float2 uv : TEXCOORD0,
+    out float4 OutColor : SV_Target0
+)
+{
+#if STEREO_LANDSCAPE
+    if (uv.x <= 0.5)
+    {
+        OutColor = LeftEye.Sample(
+            BilinearTextureSampler,
+            float2(uv.x * 2., uv.y)
+        );
+    }
+    else
+    {
+        OutColor = RightEye.Sample(
+            BilinearTextureSampler,
+            float2((uv.x - 0.5) * 2., uv.y)
+        );
+    }
+#else
+    if (uv.y <= 0.5)
+    {
+        OutColor = LeftEye.Sample(
+            BilinearTextureSampler,
+            float2(uv.x, uv.y * 2.)
+        );
+    }
+    else
+    {
+        OutColor = RightEye.Sample(
+            BilinearTextureSampler,
+            float2(uv.x, (uv.y - 0.5) * 2.)
+        );
+    }
+#endif
 }
 
 void DomeMasterOutputPS(

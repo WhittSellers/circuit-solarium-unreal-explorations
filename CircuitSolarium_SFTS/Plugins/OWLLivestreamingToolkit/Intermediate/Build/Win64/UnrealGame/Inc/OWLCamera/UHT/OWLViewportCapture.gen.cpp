@@ -13,8 +13,35 @@ void EmptyLinkFunctionForGeneratedCodeOWLViewportCapture() {}
 	ENGINE_API UClass* Z_Construct_UClass_UTextureRenderTarget2D_NoRegister();
 	OWLCAMERA_API UClass* Z_Construct_UClass_AOWLViewportCapture();
 	OWLCAMERA_API UClass* Z_Construct_UClass_AOWLViewportCapture_NoRegister();
+	OWLCAMERA_API UFunction* Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature();
 	UPackage* Z_Construct_UPackage__Script_OWLCamera();
 // End Cross Module References
+	struct Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature_Statics
+	{
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature_Statics::Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/OWLViewportCapture.h" },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_OWLCamera, nullptr, "OnViewportCaptureResized__DelegateSignature", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature_Statics::Function_MetaDataParams) };
+	UFunction* Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
+void FOnViewportCaptureResized_DelegateWrapper(const FMulticastScriptDelegate& OnViewportCaptureResized)
+{
+	OnViewportCaptureResized.ProcessMulticastDelegate<UObject>(NULL);
+}
 	void AOWLViewportCapture::StaticRegisterNativesAOWLViewportCapture()
 	{
 	}
@@ -43,6 +70,10 @@ void EmptyLinkFunctionForGeneratedCodeOWLViewportCapture() {}
 #endif
 		static void NewProp_bCaptureWidgets_SetBit(void* Obj);
 		static const UECodeGen_Private::FBoolPropertyParams NewProp_bCaptureWidgets;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_OnTargetResized_MetaData[];
+#endif
+		static const UECodeGen_Private::FMulticastDelegatePropertyParams NewProp_OnTargetResized;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_IntermediateTarget_MetaData[];
 #endif
@@ -95,6 +126,14 @@ void EmptyLinkFunctionForGeneratedCodeOWLViewportCapture() {}
 	}
 	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_bCaptureWidgets = { "bCaptureWidgets", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AOWLViewportCapture), &Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_bCaptureWidgets_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_bCaptureWidgets_MetaData), Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_bCaptureWidgets_MetaData) };
 #if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_OnTargetResized_MetaData[] = {
+		{ "Category", "Off World Live Capture Settings" },
+		{ "ModuleRelativePath", "Public/OWLViewportCapture.h" },
+		{ "Tooltip", "Event hook for handling updates when the resolution changes. When streaming from a packaged game viewport, this is useful to only start the media output after the initial resize." },
+	};
+#endif
+	const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_OnTargetResized = { "OnTargetResized", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AOWLViewportCapture, OnTargetResized), Z_Construct_UDelegateFunction_OWLCamera_OnViewportCaptureResized__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_OnTargetResized_MetaData), Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_OnTargetResized_MetaData) }; // 3880972374
+#if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_IntermediateTarget_MetaData[] = {
 		{ "ModuleRelativePath", "Public/OWLViewportCapture.h" },
 	};
@@ -104,6 +143,7 @@ void EmptyLinkFunctionForGeneratedCodeOWLViewportCapture() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_TextureTarget,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_PauseRendering,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_bCaptureWidgets,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_OnTargetResized,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AOWLViewportCapture_Statics::NewProp_IntermediateTarget,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_AOWLViewportCapture_Statics::StaticCppClassTypeInfo = {
@@ -144,9 +184,9 @@ void EmptyLinkFunctionForGeneratedCodeOWLViewportCapture() {}
 		static const FClassRegisterCompiledInInfo ClassInfo[];
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWLCamera_Public_OWLViewportCapture_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_AOWLViewportCapture, AOWLViewportCapture::StaticClass, TEXT("AOWLViewportCapture"), &Z_Registration_Info_UClass_AOWLViewportCapture, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOWLViewportCapture), 2676450639U) },
+		{ Z_Construct_UClass_AOWLViewportCapture, AOWLViewportCapture::StaticClass, TEXT("AOWLViewportCapture"), &Z_Registration_Info_UClass_AOWLViewportCapture, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AOWLViewportCapture), 309157023U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWLCamera_Public_OWLViewportCapture_h_1333399094(TEXT("/Script/OWLCamera"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWLCamera_Public_OWLViewportCapture_h_3199025932(TEXT("/Script/OWLCamera"),
 		Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWLCamera_Public_OWLViewportCapture_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWLCamera_Public_OWLViewportCapture_h_Statics::ClassInfo),
 		nullptr, 0,
 		nullptr, 0);

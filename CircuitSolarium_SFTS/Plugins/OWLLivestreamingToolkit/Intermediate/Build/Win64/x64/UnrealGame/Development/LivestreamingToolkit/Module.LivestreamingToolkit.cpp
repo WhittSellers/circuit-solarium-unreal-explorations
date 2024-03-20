@@ -17,6 +17,7 @@
 #include "C:/toolkit-tmp/Plugins/OWLLivestreamingToolkit/Source/LivestreamingToolkit/Private/ServerAuth/AuthDelegates.cpp"
 #include "C:/toolkit-tmp/Plugins/OWLLivestreamingToolkit/Source/LivestreamingToolkit/Private/ServerAuth/AuthLoader.cpp"
 #include "C:/toolkit-tmp/Plugins/OWLLivestreamingToolkit/Source/LivestreamingToolkit/Private/ServerAuth/AuthSharedSettings.cpp"
+#include "C:/toolkit-tmp/Plugins/OWLLivestreamingToolkit/Source/LivestreamingToolkit/Private/ServerAuth/MeteredMinsStore.cpp"
 #include "C:/toolkit-tmp/Plugins/OWLLivestreamingToolkit/Source/LivestreamingToolkit/Private/ServerAuth/MeteredUsageWorker.cpp"
 #include "C:/toolkit-tmp/Plugins/OWLLivestreamingToolkit/Source/LivestreamingToolkit/Private/ServerAuth/PluginUpdate.cpp"
 #include "C:/toolkit-tmp/Plugins/OWLLivestreamingToolkit/Source/LivestreamingToolkit/Private/Telemetry/OWLTelemetry.cpp"

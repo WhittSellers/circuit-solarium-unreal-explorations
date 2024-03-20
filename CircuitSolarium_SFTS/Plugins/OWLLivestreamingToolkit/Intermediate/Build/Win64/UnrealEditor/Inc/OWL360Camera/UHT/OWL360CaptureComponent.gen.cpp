@@ -144,6 +144,8 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 	const UECodeGen_Private::FEnumeratorParam Z_Construct_UEnum_OWL360Camera_E360ProjectionType_Statics::Enumerators[] = {
 		{ "E360ProjectionType::CT_CubeMap", (int64)E360ProjectionType::CT_CubeMap },
 		{ "E360ProjectionType::CT_EquiRectangular", (int64)E360ProjectionType::CT_EquiRectangular },
+		{ "E360ProjectionType::CT_StereoEquiRectangular", (int64)E360ProjectionType::CT_StereoEquiRectangular },
+		{ "E360ProjectionType::CT_StereoVR180", (int64)E360ProjectionType::CT_StereoVR180 },
 		{ "E360ProjectionType::CT_DomeMaster", (int64)E360ProjectionType::CT_DomeMaster },
 		{ "E360ProjectionType::CT_MirrorDome", (int64)E360ProjectionType::CT_MirrorDome },
 	};
@@ -161,6 +163,10 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		{ "CT_MirrorDome.Experimental", "" },
 		{ "CT_MirrorDome.Name", "E360ProjectionType::CT_MirrorDome" },
 		{ "CT_MirrorDome.ToolTip", "A mirror dome shader for projecting a 2D image on a spherical mirror" },
+		{ "CT_StereoEquiRectangular.DisplayName", "Stereo Equirectangular" },
+		{ "CT_StereoEquiRectangular.Name", "E360ProjectionType::CT_StereoEquiRectangular" },
+		{ "CT_StereoVR180.DisplayName", "VR180 (Stereo)" },
+		{ "CT_StereoVR180.Name", "E360ProjectionType::CT_StereoVR180" },
 		{ "ModuleRelativePath", "Public/OWL360CaptureComponent.h" },
 		{ "ToolTip", "Type of texture output from the 360 cam" },
 	};
@@ -184,6 +190,13 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 			UECodeGen_Private::ConstructUEnum(Z_Registration_Info_UEnum_E360ProjectionType.InnerSingleton, Z_Construct_UEnum_OWL360Camera_E360ProjectionType_Statics::EnumParams);
 		}
 		return Z_Registration_Info_UEnum_E360ProjectionType.InnerSingleton;
+	}
+	DEFINE_FUNCTION(UOWL360CaptureComponent::execIsStereoProjection)
+	{
+		P_FINISH;
+		P_NATIVE_BEGIN;
+		*(bool*)Z_Param__Result=P_THIS->IsStereoProjection();
+		P_NATIVE_END;
 	}
 	DEFINE_FUNCTION(UOWL360CaptureComponent::execClearHiddenComponents)
 	{
@@ -274,6 +287,7 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 			{ "GetTargetCamera", &UOWL360CaptureComponent::execGetTargetCamera },
 			{ "HideActorComponents", &UOWL360CaptureComponent::execHideActorComponents },
 			{ "HideComponent", &UOWL360CaptureComponent::execHideComponent },
+			{ "IsStereoProjection", &UOWL360CaptureComponent::execIsStereoProjection },
 			{ "RemoveShowOnlyActorComponents", &UOWL360CaptureComponent::execRemoveShowOnlyActorComponents },
 			{ "RemoveShowOnlyComponent", &UOWL360CaptureComponent::execRemoveShowOnlyComponent },
 			{ "ShowOnlyActorComponents", &UOWL360CaptureComponent::execShowOnlyActorComponents },
@@ -509,6 +523,48 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		}
 		return ReturnFunction;
 	}
+	struct Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics
+	{
+		struct OWL360CaptureComponent_eventIsStereoProjection_Parms
+		{
+			bool ReturnValue;
+		};
+		static void NewProp_ReturnValue_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_ReturnValue;
+		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[];
+#endif
+		static const UECodeGen_Private::FFunctionParams FuncParams;
+	};
+	void Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::NewProp_ReturnValue_SetBit(void* Obj)
+	{
+		((OWL360CaptureComponent_eventIsStereoProjection_Parms*)Obj)->ReturnValue = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(OWL360CaptureComponent_eventIsStereoProjection_Parms), &Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::NewProp_ReturnValue_SetBit, METADATA_PARAMS(0, nullptr) };
+	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::PropPointers[] = {
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::NewProp_ReturnValue,
+	};
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::Function_MetaDataParams[] = {
+		{ "Category", "OWL360Capture" },
+		{ "Comment", "/** Whether the current projection type is stereo. */" },
+		{ "ModuleRelativePath", "Public/OWL360CaptureComponent.h" },
+		{ "ToolTip", "Whether the current projection type is stereo." },
+	};
+#endif
+	const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UOWL360CaptureComponent, nullptr, "IsStereoProjection", nullptr, nullptr, Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::PropPointers), sizeof(Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::OWL360CaptureComponent_eventIsStereoProjection_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x54020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::Function_MetaDataParams), Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::Function_MetaDataParams) };
+	static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::PropPointers) < 2048);
+	static_assert(sizeof(Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::OWL360CaptureComponent_eventIsStereoProjection_Parms) < MAX_uint16);
+	UFunction* Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection()
+	{
+		static UFunction* ReturnFunction = nullptr;
+		if (!ReturnFunction)
+		{
+			UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection_Statics::FuncParams);
+		}
+		return ReturnFunction;
+	}
 	struct Z_Construct_UFunction_UOWL360CaptureComponent_RemoveShowOnlyActorComponents_Statics
 	{
 		struct OWL360CaptureComponent_eventRemoveShowOnlyActorComponents_Parms
@@ -740,6 +796,10 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 #endif
 		static const UECodeGen_Private::FEnumPropertyParams NewProp_ProjectionType360;
 #if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_StereoEyeSeparation_MetaData[];
+#endif
+		static const UECodeGen_Private::FFloatPropertyParams NewProp_StereoEyeSeparation;
+#if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_Angle_MetaData[];
 #endif
 		static const UECodeGen_Private::FIntPropertyParams NewProp_Angle;
@@ -871,6 +931,11 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_SecondaryScreenPercentage_MetaData[];
 #endif
 		static const UECodeGen_Private::FFloatPropertyParams NewProp_SecondaryScreenPercentage;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_bForceCameraCut_MetaData[];
+#endif
+		static void NewProp_bForceCameraCut_SetBit(void* Obj);
+		static const UECodeGen_Private::FBoolPropertyParams NewProp_bForceCameraCut;
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_InternalRTs_Inner;
 #if WITH_METADATA
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_InternalRTs_MetaData[];
@@ -880,6 +945,14 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		static const UECodeGen_Private::FMetaDataPairParam NewProp_CameraMesh_MetaData[];
 #endif
 		static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraMesh;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_LeftEyeRT_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_LeftEyeRT;
+#if WITH_METADATA
+		static const UECodeGen_Private::FMetaDataPairParam NewProp_RightEyeRT_MetaData[];
+#endif
+		static const UECodeGen_Private::FObjectPropertyParams NewProp_RightEyeRT;
 		static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UECodeGen_Private::FClassParams ClassParams;
@@ -896,6 +969,7 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		{ &Z_Construct_UFunction_UOWL360CaptureComponent_GetTargetCamera, "GetTargetCamera" }, // 2250574922
 		{ &Z_Construct_UFunction_UOWL360CaptureComponent_HideActorComponents, "HideActorComponents" }, // 3314629945
 		{ &Z_Construct_UFunction_UOWL360CaptureComponent_HideComponent, "HideComponent" }, // 3926780463
+		{ &Z_Construct_UFunction_UOWL360CaptureComponent_IsStereoProjection, "IsStereoProjection" }, // 2240334768
 		{ &Z_Construct_UFunction_UOWL360CaptureComponent_RemoveShowOnlyActorComponents, "RemoveShowOnlyActorComponents" }, // 1919527570
 		{ &Z_Construct_UFunction_UOWL360CaptureComponent_RemoveShowOnlyComponent, "RemoveShowOnlyComponent" }, // 4260324033
 		{ &Z_Construct_UFunction_UOWL360CaptureComponent_ShowOnlyActorComponents, "ShowOnlyActorComponents" }, // 2829004089
@@ -956,15 +1030,28 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		{ "ToolTip", "Output texture format" },
 	};
 #endif
-	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360 = { "ProjectionType360", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, ProjectionType360), Z_Construct_UEnum_OWL360Camera_E360ProjectionType, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360_MetaData) }; // 2842942634
+	const UECodeGen_Private::FEnumPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360 = { "ProjectionType360", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Enum, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, ProjectionType360), Z_Construct_UEnum_OWL360Camera_E360ProjectionType, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360_MetaData) }; // 3852104200
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_StereoEyeSeparation_MetaData[] = {
+		{ "Category", "Off World Live Capture Settings" },
+		{ "Comment", "/* Set the gap between left eye and right eye in world units */" },
+		{ "DevelopmentStatus", "Experimental" },
+		{ "EditCondition", "IsStereoProjection()" },
+		{ "EditConditionHides", "" },
+		{ "ModuleRelativePath", "Public/OWL360CaptureComponent.h" },
+		{ "ToolTip", "Set the gap between left eye and right eye in world units" },
+		{ "UIMin", "0.1" },
+	};
+#endif
+	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_StereoEyeSeparation = { "StereoEyeSeparation", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, StereoEyeSeparation), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_StereoEyeSeparation_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_StereoEyeSeparation_MetaData) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_Angle_MetaData[] = {
 		{ "Category", "Off World Live Capture Settings" },
-		{ "Comment", "/* Output texture format */" },
+		{ "Comment", "/* Dome ONLY Settings */" },
 		{ "EditCondition", "ProjectionType360 == E360ProjectionType::CT_DomeMaster" },
 		{ "EditConditionHides", "" },
 		{ "ModuleRelativePath", "Public/OWL360CaptureComponent.h" },
-		{ "ToolTip", "Output texture format" },
+		{ "ToolTip", "Dome ONLY Settings" },
 	};
 #endif
 	const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_Angle = { "Angle", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, Angle), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_Angle_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_Angle_MetaData) };
@@ -1283,6 +1370,19 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 	};
 #endif
 	const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_SecondaryScreenPercentage = { "SecondaryScreenPercentage", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, SecondaryScreenPercentage), METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_SecondaryScreenPercentage_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_SecondaryScreenPercentage_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bForceCameraCut_MetaData[] = {
+		{ "Category", "Off World Live Capture Settings|Advanced" },
+		{ "Comment", "/** Forces the `bCameraCut` flag which disables inter-frame caching for certain Unreal post-processing, like TSR motion blur. Disable if you notice performance degradation or lack of inter-frame effects */" },
+		{ "ModuleRelativePath", "Public/OWL360CaptureComponent.h" },
+		{ "ToolTip", "Forces the `bCameraCut` flag which disables inter-frame caching for certain Unreal post-processing, like TSR motion blur. Disable if you notice performance degradation or lack of inter-frame effects" },
+	};
+#endif
+	void Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bForceCameraCut_SetBit(void* Obj)
+	{
+		((UOWL360CaptureComponent*)Obj)->bForceCameraCut = 1;
+	}
+	const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bForceCameraCut = { "bForceCameraCut", nullptr, (EPropertyFlags)0x0010000000000005, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(UOWL360CaptureComponent), &Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bForceCameraCut_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bForceCameraCut_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bForceCameraCut_MetaData) };
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_InternalRTs_Inner = { "InternalRTs", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UTextureRenderTarget2D_NoRegister, METADATA_PARAMS(0, nullptr) };
 #if WITH_METADATA
 	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_InternalRTs_MetaData[] = {
@@ -1296,6 +1396,20 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 	};
 #endif
 	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_CameraMesh = { "CameraMesh", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, CameraMesh), Z_Construct_UClass_UStaticMesh_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_CameraMesh_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_CameraMesh_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_LeftEyeRT_MetaData[] = {
+		{ "Comment", "/* Render targets for writing left and right render targets for stereo output */" },
+		{ "ModuleRelativePath", "Public/OWL360CaptureComponent.h" },
+		{ "ToolTip", "Render targets for writing left and right render targets for stereo output" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_LeftEyeRT = { "LeftEyeRT", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, LeftEyeRT), Z_Construct_UClass_UTextureRenderTarget2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_LeftEyeRT_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_LeftEyeRT_MetaData) };
+#if WITH_METADATA
+	const UECodeGen_Private::FMetaDataPairParam Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_RightEyeRT_MetaData[] = {
+		{ "ModuleRelativePath", "Public/OWL360CaptureComponent.h" },
+	};
+#endif
+	const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_RightEyeRT = { "RightEyeRT", nullptr, (EPropertyFlags)0x0020080000002000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UOWL360CaptureComponent, RightEyeRT), Z_Construct_UClass_UTextureRenderTarget2D_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_RightEyeRT_MetaData), Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_RightEyeRT_MetaData) };
 	const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UOWL360CaptureComponent_Statics::PropPointers[] = {
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_TextureTarget,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_StreamResolution_Underlying,
@@ -1303,6 +1417,7 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_OutputResolution,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360_Underlying,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ProjectionType360,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_StereoEyeSeparation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_Angle,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_DomeProjectorRotation,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_DomeProjectorLocation,
@@ -1338,9 +1453,12 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bEnableUpscaling,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_ScreenPercentage,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_SecondaryScreenPercentage,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_bForceCameraCut,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_InternalRTs_Inner,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_InternalRTs,
 		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_CameraMesh,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_LeftEyeRT,
+		(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UOWL360CaptureComponent_Statics::NewProp_RightEyeRT,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_UOWL360CaptureComponent_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UOWL360CaptureComponent>::IsAbstract,
@@ -1382,12 +1500,12 @@ void EmptyLinkFunctionForGeneratedCodeOWL360CaptureComponent() {}
 	};
 	const FEnumRegisterCompiledInInfo Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_Statics::EnumInfo[] = {
 		{ EStreamResolution_360_StaticEnum, TEXT("EStreamResolution_360"), &Z_Registration_Info_UEnum_EStreamResolution_360, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 517733388U) },
-		{ E360ProjectionType_StaticEnum, TEXT("E360ProjectionType"), &Z_Registration_Info_UEnum_E360ProjectionType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 2842942634U) },
+		{ E360ProjectionType_StaticEnum, TEXT("E360ProjectionType"), &Z_Registration_Info_UEnum_E360ProjectionType, CONSTRUCT_RELOAD_VERSION_INFO(FEnumReloadVersionInfo, 3852104200U) },
 	};
 	const FClassRegisterCompiledInInfo Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_Statics::ClassInfo[] = {
-		{ Z_Construct_UClass_UOWL360CaptureComponent, UOWL360CaptureComponent::StaticClass, TEXT("UOWL360CaptureComponent"), &Z_Registration_Info_UClass_UOWL360CaptureComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UOWL360CaptureComponent), 1787105921U) },
+		{ Z_Construct_UClass_UOWL360CaptureComponent, UOWL360CaptureComponent::StaticClass, TEXT("UOWL360CaptureComponent"), &Z_Registration_Info_UClass_UOWL360CaptureComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UOWL360CaptureComponent), 924992018U) },
 	};
-	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_745240506(TEXT("/Script/OWL360Camera"),
+	static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_1567774563(TEXT("/Script/OWL360Camera"),
 		Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_Statics::ClassInfo),
 		nullptr, 0,
 		Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_Statics::EnumInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_toolkit_tmp_Plugins_OWLLivestreamingToolkit_Source_OWL360Camera_Public_OWL360CaptureComponent_h_Statics::EnumInfo));

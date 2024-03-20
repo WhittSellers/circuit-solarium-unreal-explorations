@@ -48,7 +48,6 @@ public class OWLScreenCapture : ModuleRules
 			// These parameters are mandatory for winrt support
 			bEnableExceptions = true;
 			bUseUnity = false;
-			CppStandard = CppStandardVersion.Cpp17;
 			PrivateDependencyModuleNames.AddRange(new string[]
 			{
 				"D3D12RHI",

@@ -42,6 +42,8 @@ UENUM(BlueprintType)
 enum class E360ProjectionType : uint8 {
 	CT_CubeMap UMETA(DisplayName = "CubeMap"),
 	CT_EquiRectangular UMETA(DisplayName = "Equirectangular"),
+	CT_StereoEquiRectangular UMETA(DisplayName = "Stereo Equirectangular"),
+	CT_StereoVR180 UMETA(DisplayName = "VR180 (Stereo)"),
 	CT_DomeMaster UMETA(DisplayName = "DomeMaster"),
 	CT_MirrorDome UMETA(DisplayName = "Mirror Dome (Beta)", ToolTip="A mirror dome shader for projecting a 2D image on a spherical mirror", Experimental)
 };
@@ -93,6 +95,11 @@ public:
 	E360ProjectionType ProjectionType360 = E360ProjectionType::CT_CubeMap;
 
 	/* Output texture format */
+	/* Set the gap between left eye and right eye in world units */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Off World Live Capture Settings", Experimental, meta = (UIMin = "0.1", EditCondition="IsStereoProjection()", EditConditionHides))
+	float StereoEyeSeparation = 3.0;
+
+	/* Dome ONLY Settings */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Off World Live Capture Settings", meta=(EditCondition = "ProjectionType360 == E360ProjectionType::CT_DomeMaster", EditConditionHides))
 	int Angle = 180;
 
@@ -197,6 +204,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Off World Live Capture Settings|Advanced", Experimental, meta = (UIMin = "25", UIMax = "200", ClampMin="25", ClampMax="200", EditCondition="bEnableUpscaling"))
 	float SecondaryScreenPercentage = 100;
 
+	/** Forces the `bCameraCut` flag which disables inter-frame caching for certain Unreal post-processing, like TSR motion blur. Disable if you notice performance degradation or lack of inter-frame effects */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Off World Live Capture Settings|Advanced")
+	bool bForceCameraCut = false;
+
 public:
 	UFUNCTION(BlueprintPure, Category = "OWL360Capture")
 	UCameraComponent* GetTargetCamera() const;
@@ -245,6 +256,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "OWL360Capture")
 	void ClearHiddenComponents();
 
+	/** Whether the current projection type is stereo. */
+	UFUNCTION(BlueprintCallable, Category = "OWL360Capture")
+	bool IsStereoProjection() const;
+
 public:
 	FEngineShowFlags ShowFlags;
 	int32 ViewModeIndex;
@@ -273,6 +288,7 @@ public:
 protected:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 	void RenderScene();
+	void RenderView(FMinimalViewInfo View, UTextureRenderTarget2D* OutputRT, FGameTime Time);
 	void DrawFace(
 		int32 FaceIndex,
 		FMinimalViewInfo BaseViewInfo,
@@ -281,13 +297,13 @@ protected:
 		FSceneViewFamily& ViewFamily,
 		const int32 FaceIndex,
 		const FMinimalViewInfo& BaseViewInfo);
-	bool PreRender();
 	bool SetupTextureTarget();
 	bool SetupInternalRenderTargets(const EPixelFormat PixelFormat);
 	void SetProjectionType();
 	void SetFOVAngle();
 	void UpdateShowFlags();
 	void DomeFaceControl();
+	void RegenerateStereoTexture(UTextureRenderTarget2D* &Target);
 	/**
 	 * The view state holds persistent scene rendering state and enables occlusion culling in scene captures.
 	 * NOTE: This object is used by the rendering thread. When the game thread attempts to destroy it, FDeferredCleanupInterface will keep the object around until the RT is done accessing it.
@@ -299,7 +315,15 @@ protected:
 	UPROPERTY()
 	UStaticMesh* CameraMesh = nullptr;
 
+	/* Render targets for writing left and right render targets for stereo output */
+	UPROPERTY(Transient)
+	UTextureRenderTarget2D* LeftEyeRT = nullptr;
 
+	UPROPERTY(Transient)
+	UTextureRenderTarget2D* RightEyeRT = nullptr;
+
+private:
+	bool ShowOnlyActive() const;
 private:
 	E360ProjectionType ActiveProjectionType = E360ProjectionType::CT_CubeMap;
 	// regardless of the output format, we increase the FOV
@@ -317,9 +341,6 @@ private:
 		{ZAxis, 0}, // front
 		{ZAxis, -PI} // back
 	};
-	// Store for instance of Shader Executor
-	// for converting cube to equirectangular projection
-	class FCube2EquiExecutor* EquiShader = nullptr;
 	class FOffWorldPostProcess* BloomShader = nullptr;
 
 	bool FaceAlreadyClear[6] = {

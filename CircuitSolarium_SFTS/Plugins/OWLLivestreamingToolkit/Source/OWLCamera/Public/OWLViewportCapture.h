@@ -10,6 +10,8 @@
 
 class FSceneViewport;
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnViewportCaptureResized);
+
 UCLASS(hidecategories = (Collision, Attachment, Actor))
 class OWLCAMERA_API AOWLViewportCapture : public AActor
 {
@@ -25,6 +27,9 @@ public:
 	/* Capture widgets (Standalone / Packaged / PIE only -- will do nothing in editor) */
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Off World Live Capture Settings")
 	bool bCaptureWidgets = false;
+
+	UPROPERTY(BlueprintAssignable, Category = "Off World Live Capture Settings", meta=(Tooltip="Event hook for handling updates when the resolution changes. When streaming from a packaged game viewport, this is useful to only start the media output after the initial resize."))
+	FOnViewportCaptureResized OnTargetResized;
 
 public:
 	AOWLViewportCapture();

@@ -214,7 +214,7 @@
 #define MEDIAUTILS_API 
 #define LIVESTREAMINGTOOLKITSHADERS_API 
 #define OWL_AUTH_URL "https://plugin-api.offworld.live"
-#define RELEASE_DATE 2024-01-10T17:26:37.000Z
+#define RELEASE_DATE 2024-02-27T19:10:49.000Z
 #define OFFWORLDLIVE_DEBUG 0
 #define DEBUG_APP_LICENCE 0
 #define AUTH_APP_NAME owl-licensing-utility.exe
